@@ -24,4 +24,12 @@ class Collage extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    /**
+     * Get the photos owned by the collage.
+     */
+    public function photos() 
+    {
+        return $this->hasMany('App\CollagePhoto');
+    }
 }
