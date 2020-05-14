@@ -3,7 +3,6 @@
 namespace App\Services;
 
 use App\Collage;
-use App\CollagePhoto;
 use App\Exceptions\CollageNotCreatedException;
 use App\Exceptions\NoUploadedPhotoException;
 
@@ -55,7 +54,17 @@ class CollageService
         $photos = [];
 
         foreach ($data['photos'] as $photo) {
-            $photos[] = $this->collagePhotoService->createNew($photo['file'], $photo['config']);
+            $collagePhoto = $this->collagePhotoService->uploadAndCreate(
+                $photo['file'],
+                $photo['config'],
+                $collage->getUploadDir()
+            );
+
+            if ($collagePhoto) {
+                $collagePhoto->user_id = $collage->user_id;
+
+                $photos[] = $collagePhoto;
+            }
         }
 
         $collage->photos()->saveMany($photos);
