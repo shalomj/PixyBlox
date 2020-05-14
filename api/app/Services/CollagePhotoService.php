@@ -4,26 +4,47 @@ namespace App\Services;
 
 use App\CollagePhoto;
 use Illuminate\Http\UploadedFile;
-use function json_decode;
 
 class CollagePhotoService
 {
     /**
-     * Create new collage photo model
+     * Upload photo and create collage photo instance
      *
      * @param UploadedFile $file
      * @param string       $config
+     * @param string       $uploadDir
      *
-     * @return \App\CollagePhoto
+     * @return CollagePhoto|bool
      */
-    public function createNew(UploadedFile $file, string $config) : CollagePhoto
+    public function uploadAndCreate(UploadedFile $file, string $config, string $uploadDir)
     {
-        $collagePhoto = new CollagePhoto();
+        $path = $this->upload($file, $uploadDir);
 
-        $collagePhoto->user_id = 1; // TODO: Use actual user id once authentication is implemented
+        if (!$path) return false;
+
+        $collagePhoto = new CollagePhoto;
+
         $collagePhoto->filename = $file->getClientOriginalName();
+        $collagePhoto->upload_path = $path;
         $collagePhoto->config = json_decode($config);
 
         return $collagePhoto;
+    }
+
+    /**
+     * Upload photo to collage directory
+     *
+     * @param UploadedFile $file
+     * @param string       $uploadDir
+     *
+     * @return false|string
+     */
+    public function upload(UploadedFile $file, string $uploadDir)
+    {
+        $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+
+        $filename = $originalFilename . '-' . time() . '.' . $file->getClientOriginalExtension();
+
+        return $file->storeAs('public/' . $uploadDir, $filename);
     }
 }
