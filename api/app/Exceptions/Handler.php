@@ -57,6 +57,13 @@ class Handler extends ExceptionHandler
                 'errors' => $exception->errors(), 
             ]);
         }
+        // App exception handler
+        else if ($exception instanceof PixyBloxException) {
+            return response()->json([
+                'status' => 'failed',
+                'message' => $exception->getMessage(),
+            ]);
+        }
 
         return parent::render($request, $exception);
     }
