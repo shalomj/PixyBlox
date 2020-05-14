@@ -32,4 +32,14 @@ class Collage extends Model
     {
         return $this->hasMany('App\CollagePhoto');
     }
+
+    /**
+     * Get upload directory path
+     *
+     * @return string
+     */
+    public function getUploadDir()
+    {
+        return "collages/{$this->id}_{$this->created_at->timestamp}/";
+    }
 }
