@@ -3,10 +3,27 @@
 namespace App\Http\Controllers;
 
 use App\Collage;
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreCollageRequest;
+use App\Services\CollageService;
+use Exception;
 
 class CollageController extends Controller
 {
+    /**
+     * @var CollageService
+     */
+    private $collageService;
+
+    /**
+     * CollageController constructor.
+     *
+     * @param CollageService $collageService
+     */
+    public function __construct(CollageService $collageService)
+    {
+        $this->collageService = $collageService;
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -23,9 +40,14 @@ class CollageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCollageRequest $request)
     {
-        //
+        $collage = $this->collageService->storeOrFail($request->all());
+
+        return response()->json([
+            'status' => 'success',
+            'data' => $collage, 
+        ]);
     }
 
     /**
@@ -46,7 +68,7 @@ class CollageController extends Controller
      * @param  \App\Collage  $collage
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Collage $collage)
+    public function update(StoreCollageRequest $request, Collage $collage)
     {
         //
     }
