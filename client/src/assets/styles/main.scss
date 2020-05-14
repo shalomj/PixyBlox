@@ -1,0 +1,9 @@
+@import '~bootstrap/scss/bootstrap.scss';
+
+@import 'config';
+
+body {
+  background-color: $light-color;
+  font-family: $font-stack;
+  line-height: 1.6;
+}

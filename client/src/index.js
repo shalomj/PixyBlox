@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import './assets/fonts/Roboto.ttf';
+import './assets/styles/main.scss';
+import App from './components/App';
 
 ReactDOM.render(
   <React.StrictMode>
