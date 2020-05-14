@@ -14,6 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::apiResource('collages', 'CollageController');
+
+Route::fallback(function () {
+    return response()->json([
+        'status' => 'failed', 
+        'message' => 'Not Found.', 
+    ], 404);
 });
