@@ -1,9 +1,10 @@
 import React from 'react';
+import Layouts from '../Layouts';
 
 const CollageHeader = () => {
   return (
     <header id="collage-header" className="d-flex align-items-center justify-content-between">
-      <p>Layout toggle here</p>
+      <Layouts />
       <button className="btn btn-primary shadow-sm">Save</button>
     </header>
   )

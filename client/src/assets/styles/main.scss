@@ -57,4 +57,57 @@ body {
       margin: 0 auto;
     }
   }
+
+  #collage-layout-container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(40px, 1fr));
+    grid-gap: 20px;
+
+    .collage-layout {
+      display: grid;
+      height: 40px;
+      background-color: #eee;
+      cursor: pointer;
+
+      .collage-layout-block {
+        position: relative;
+        overflow: hidden;
+        height: 100%;
+        width: 100%;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 10px;
+        color: #fff;
+
+        &.layout-block-1 {
+          background-color: #575554;
+        }
+
+        &.layout-block-2 {
+          background-color: #827f7e;
+        }
+
+        &.layout-block-3 {
+          background-color: #b7b4b4;
+        }
+      }
+
+      &.active, &:hover {
+        
+        .layout-block-1 {
+          background-color: #63add9;
+        }
+
+        .layout-block-2 {
+          background-color: #97c2e3;
+        }
+
+        .layout-block-3 {
+          background-color: #c9def0;
+        }
+      }
+    }
+  }
 }
