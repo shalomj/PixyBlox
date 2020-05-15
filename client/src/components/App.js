@@ -1,9 +1,9 @@
 import React from 'react';
-import logo from '../assets/images/logo.svg';
+import Navbar from './Navbar';
 
 function App() {
   return (
-    <h1>PixyBlox</h1>
+    <Navbar />
   );
 }
 

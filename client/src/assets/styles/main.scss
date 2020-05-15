@@ -11,3 +11,14 @@ body {
   font-family: $font-stack;
   line-height: 1.6;
 }
+
+#navbar {
+  background-color: $navbar-bg-color;
+  color: #fff;
+  height: 60px;
+
+  &-title {
+    color: #fff;
+    margin-left: 20px;
+  }
+}
