@@ -1,9 +1,13 @@
 @import '~bootstrap/scss/bootstrap.scss';
-
 @import 'config';
 
+html, body, #root {
+  height: 100%;
+  width: 100%;
+}
+
 body {
-  background-color: $light-color;
+  background-color: $body-bg;
   font-family: $font-stack;
   line-height: 1.6;
 }
