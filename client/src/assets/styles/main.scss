@@ -45,7 +45,7 @@ body {
   #collage-body {
     background-color: #888;
     height: 500px;
-    border: 1px solid #aaa;
+    border: 1px solid $block-bg-1;
     display: grid;
 
     .collage-block {
@@ -67,6 +67,16 @@ body {
       &.collage-bg-3 {
         background-color: $block-bg-3;
       }
+
+      .collage-block-uploader {
+        width: 100%;
+        height: 100%;
+        color: #333;
+
+        .btn {
+          font-size: 12px;
+        }
+      }
     }
   }
 
@@ -79,6 +89,7 @@ body {
       display: grid;
       height: 40px;
       background-color: #eee;
+      border: 1px solid $block-bg-1;
       cursor: pointer;
 
       .collage-layout-block {
@@ -91,7 +102,7 @@ body {
         align-items: center;
         justify-content: center;
         font-size: 10px;
-        color: #fff;
+        color: #888;
 
         &.layout-block-1 {
           background-color: $block-bg-1;
@@ -107,17 +118,22 @@ body {
       }
 
       &.active, &:hover {
+        border-color: $block-active-1;
+
+        .collage-layout-block {
+          color: #fff;
+        }
         
         .layout-block-1 {
-          background-color: #63add9;
+          background-color: $block-active-1;
         }
 
         .layout-block-2 {
-          background-color: #97c2e3;
+          background-color: $block-active-2;
         }
 
         .layout-block-3 {
-          background-color: #c9def0;
+          background-color: $block-active-3;
         }
       }
     }

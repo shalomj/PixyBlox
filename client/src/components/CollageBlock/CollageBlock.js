@@ -10,7 +10,11 @@ const CollageBlock = ({ block }) => {
 
   return (
     <section className={finalClassName} style={style}>
-      <div className="collage-block-uploader">
+      <div className="collage-block-uploader d-flex align-items-center justify-content-center">
+        <div className="w-100 text-center px-5">
+          <p>Photo {block.position}</p>
+          <button className="btn btn-light btn-lg d-block shadow text-uppercase w-100">Browse</button>
+        </div>
       </div>
     </section>
   );

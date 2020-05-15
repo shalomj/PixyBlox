@@ -1,7 +1,12 @@
 $font-stack: Montserrat-Regular, sans-serif;
 $body-bg: $white;
-$navbar-bg-color: #5BC0EB;
+$theme-blue: #5BC0EB;
+$navbar-bg-color: $theme-blue;
 
-$block-bg-1: #b2b3b3;
-$block-bg-2: #d7d8d7;
-$block-bg-3: #f2f1f1;
+$block-bg-1: #cfcfcf;
+$block-bg-2: lighten($block-bg-1, 5%);
+$block-bg-3: lighten($block-bg-1, 10%);
+
+$block-active-1: $theme-blue;
+$block-active-2: lighten($block-active-1, 10%);
+$block-active-3: lighten($block-active-1, 20%);
