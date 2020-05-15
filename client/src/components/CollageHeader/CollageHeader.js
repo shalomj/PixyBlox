@@ -5,7 +5,7 @@ const CollageHeader = () => {
   return (
     <header id="collage-header" className="d-flex align-items-center justify-content-between">
       <Layouts />
-      <button className="btn btn-primary shadow-sm">Save</button>
+      <button className="btn btn-primary shadow">Save</button>
     </header>
   )
 };
