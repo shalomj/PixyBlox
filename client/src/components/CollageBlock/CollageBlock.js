@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { CollageContext } from '../../context/CollageState';
 import { getBlockStyleByLayoutPosition } from '../../utils';
+import CollageUploader from '../CollageUploader/CollageUploader';
 
 const CollageBlock = ({ block }) => {
   const { state } = useContext(CollageContext);
@@ -10,12 +11,7 @@ const CollageBlock = ({ block }) => {
 
   return (
     <section className={finalClassName} style={style}>
-      <div className="collage-block-uploader d-flex align-items-center justify-content-center">
-        <div className="w-100 text-center px-5">
-          <p>Photo {block.position}</p>
-          <button className="btn btn-light btn-lg d-block shadow text-uppercase w-100">Browse</button>
-        </div>
-      </div>
+      <CollageUploader position={block.position} />
     </section>
   );
 };
