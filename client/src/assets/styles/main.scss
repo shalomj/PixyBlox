@@ -1,6 +1,11 @@
 @import '~bootstrap/scss/bootstrap.scss';
 @import 'config';
 
+@font-face {
+  font-family: 'Montserrat-Regular';
+  src: local('Montserrat-Regular'), url(../fonts/Montserrat-Regular.ttf) format('truetype');
+}
+
 html, body, #root {
   height: 100%;
   width: 100%;
