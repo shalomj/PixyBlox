@@ -18,7 +18,7 @@ const Layout = ({ layout }) => {
   }
 
   return (
-    <div className={'collage-layout shadow-sm' + (layout.layout === state.layout ? ' active' : '')} style={style}>
+    <div className={'collage-layout shadow' + (layout.layout === state.layout ? ' active' : '')} style={style}>
       {blocks}
     </div>
   )
