@@ -3,7 +3,7 @@ const CollageReducer = (state, action) => {
     case 'SET_LAYOUT':
         return {
           ...state, 
-          layout: layout
+          layout: action.payload.layout
         }
       break;
   
