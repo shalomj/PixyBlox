@@ -1,12 +1,9 @@
 import React from 'react';
+import { getBlockStyleByLayoutPosition } from '../../utils';
 
 const LayoutBlock = ({ layout, position }) => {
 
-  const style = {};
-
-  if (position === 1) {
-    style.gridArea = (layout > 1) ? `1 / 1 / ${layout} / auto` : '1'; 
-  }
+  const style = getBlockStyleByLayoutPosition(layout, position);
 
   return (
     <section className={`collage-layout-block layout-block-${position}`} style={style}>
