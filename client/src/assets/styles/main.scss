@@ -1,3 +1,4 @@
+@import 'custom';
 @import '~bootstrap/scss/bootstrap.scss';
 @import 'config';
 
@@ -24,5 +25,36 @@ body {
   &-title {
     color: set-navbar-text-color($navbar-bg-color);
     margin-left: 20px;
+  }
+}
+
+#collage-wrapper {
+  width: 500px;
+  height: 100%;
+  margin: 0 auto;
+  padding-top: 60px;
+
+  #collage-container {
+    width: 100%;
+  }
+
+  #collage-header {
+    padding: 15px 0;
+  }
+
+  #collage-body {
+    background-color: #888;
+    height: 500px;
+    border: 1px solid #6b6b6b;
+    display: grid;
+
+    .collage-block {
+      position: relative;
+      overflow: hidden;
+      background-color: #ccc;
+      height: 100%;
+      width: 100%;
+      margin: 0 auto;
+    }
   }
 }
