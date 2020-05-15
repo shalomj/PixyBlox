@@ -45,7 +45,7 @@ body {
   #collage-body {
     background-color: #888;
     height: 500px;
-    border: 1px solid #6b6b6b;
+    border: 1px solid #aaa;
     display: grid;
 
     .collage-block {
@@ -55,6 +55,18 @@ body {
       height: 100%;
       width: 100%;
       margin: 0 auto;
+
+      &.collage-bg-1 {
+        background-color: $block-bg-1;
+      }
+
+      &.collage-bg-2 {
+        background-color: $block-bg-2;
+      }
+
+      &.collage-bg-3 {
+        background-color: $block-bg-3;
+      }
     }
   }
 
@@ -82,15 +94,15 @@ body {
         color: #fff;
 
         &.layout-block-1 {
-          background-color: #575554;
+          background-color: $block-bg-1;
         }
 
         &.layout-block-2 {
-          background-color: #827f7e;
+          background-color: $block-bg-2;
         }
 
         &.layout-block-3 {
-          background-color: #b7b4b4;
+          background-color: $block-bg-3;
         }
       }
 
