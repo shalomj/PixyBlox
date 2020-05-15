@@ -1,0 +1,5 @@
+// Set Navbar background and text color
+@mixin set-navbar-background($color) {
+  background-color: $color;
+  color: set-navbar-text-color($color);
+}

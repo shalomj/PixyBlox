@@ -13,12 +13,11 @@ body {
 }
 
 #navbar {
-  background-color: $navbar-bg-color;
-  color: #fff;
+  @include set-navbar-background($navbar-bg-color);
   height: 60px;
 
   &-title {
-    color: #fff;
+    color: set-navbar-text-color($navbar-bg-color);
     margin-left: 20px;
   }
 }
