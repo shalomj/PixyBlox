@@ -24,7 +24,8 @@ class StoreCollageRequest extends FormRequest
     public function rules()
     {
         return [
-            'layout' => 'bail|required|integer|between:1,3', 
+            'layout' => 'bail|required|integer|between:1,3',
+            'photos.*.position' => 'bail|integer|between:1,3',
             'photos.*.file' => 'bail|file|mimes:jpeg,png|max:5120', 
             'photos.*.config' => 'json', 
         ];
@@ -38,7 +39,8 @@ class StoreCollageRequest extends FormRequest
     public function messages()
     {
         return [
-            'layout.between' => 'Invalid selected layout.', 
+            'layout.between' => 'Invalid selected layout.',
+            'photos.*.position.between' => 'Invalid image position',
         ];
     }
 }
