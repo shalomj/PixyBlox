@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <main id="collage-wrapper" className="d-flex align-items-center">
+      <main id="collage-wrapper" className="d-flex align-items-center justify-content-center">
         <CollageContextProvider>
           <Collage />
         </CollageContextProvider>
