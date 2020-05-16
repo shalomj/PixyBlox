@@ -24,8 +24,6 @@ class StoreCollageRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'bail|required|max:100', 
-            'description' => 'max:200', 
             'layout' => 'bail|required|integer|between:1,3', 
             'photos.*.file' => 'bail|file|mimes:jpeg,png|max:5120', 
             'photos.*.config' => 'json', 
