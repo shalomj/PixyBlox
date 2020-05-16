@@ -7,7 +7,6 @@ use App\Events\CollageCreatedEvent;
 use App\Http\Requests\StoreCollageRequest;
 use App\Http\Resources\CollageResource;
 use App\Services\CollageService;
-use Exception;
 
 class CollageController extends Controller
 {
