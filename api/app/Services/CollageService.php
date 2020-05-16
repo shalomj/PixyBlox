@@ -55,8 +55,7 @@ class CollageService
 
         foreach ($data['photos'] as $photo) {
             $collagePhoto = $this->collagePhotoService->uploadAndCreate(
-                $photo['file'],
-                $photo['config'],
+                $photo,
                 $collage->getUploadDir()
             );
 

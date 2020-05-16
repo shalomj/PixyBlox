@@ -16,17 +16,20 @@ class CollagePhotoService
      *
      * @return CollagePhoto|bool
      */
-    public function uploadAndCreate(UploadedFile $file, string $config, string $uploadDir)
+    public function uploadAndCreate(array $photo, string $uploadDir)
     {
+        $file = $photo['file'];
+
         $path = $this->upload($file, $uploadDir);
 
         if (!$path) return false;
 
         $collagePhoto = new CollagePhoto;
 
+        $collagePhoto->position = $photo['position'];
         $collagePhoto->filename = $file->getClientOriginalName();
         $collagePhoto->upload_path = $path;
-        $collagePhoto->config = $config;
+        $collagePhoto->config = $photo['config'];
 
         return $collagePhoto;
     }
