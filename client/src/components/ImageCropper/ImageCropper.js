@@ -62,7 +62,7 @@ const ImageCropper = ({ image, layout, position, setCropDetail }) => {
   
   return (
     <div className="w-100 h-100">
-      <img src={image} ref={img} className="d-none" style={{maxWidth: '100%'}}/>
+      <img src={image} ref={img} className="d-none" style={{maxWidth: '100%'}} alt="One of the tile for collage"/>
     </div>
   )
 };
