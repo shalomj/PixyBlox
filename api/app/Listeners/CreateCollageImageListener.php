@@ -3,9 +3,9 @@
 namespace App\Listeners;
 
 use App\Events\CollageCreatedEvent;
-use Illuminate\Contracts\Queue\ShouldQueue;
+use App\PixyBlox\PixyBlox;
 
-class CreateCollageImageListener implements ShouldQueue
+class CreateCollageImageListener 
 {
     /**
      * Create the event listener.
@@ -27,6 +27,23 @@ class CreateCollageImageListener implements ShouldQueue
     {
         $collage = $event->collage;
 
-        // Crop and combine photos here
+        $collagePhotos = $collage->photos;
+
+        $pixyBlox = new PixyBlox(
+            $collage->layout, 500, 500, $collagePhotos->toArray()
+        );
+
+        $image = $pixyBlox->make();
+
+        $collagePath = $collage->getUploadDir();
+        $filename = $collage->id . '_' . time() . '.jpg';
+
+        $savePath = storage_path("app/public/{$collagePath}/{$filename}");
+
+        if ($image->save($savePath, 100, 'jpg')) {
+            $collage->upload_path = "{$collagePath}/{$filename}";
+
+            $collage->save();
+        }
     }
 }
