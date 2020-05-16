@@ -20,7 +20,7 @@ class CollagePhotoService
     {
         $file = $photo['file'];
 
-        $path = $this->upload($file, $uploadDir);
+        $path = $file->store($uploadDir);
 
         if (!$path) return false;
 
@@ -32,22 +32,5 @@ class CollagePhotoService
         $collagePhoto->config = $photo['config'];
 
         return $collagePhoto;
-    }
-
-    /**
-     * Upload photo to collage directory
-     *
-     * @param UploadedFile $file
-     * @param string       $uploadDir
-     *
-     * @return false|string
-     */
-    public function upload(UploadedFile $file, string $uploadDir)
-    {
-        $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
-
-        $filename = $originalFilename . '-' . time() . '.' . $file->getClientOriginalExtension();
-
-        return $file->storeAs('public/' . $uploadDir, $filename);
     }
 }
