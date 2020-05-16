@@ -30,7 +30,7 @@ const Collage = () => {
       if (response.data.status === 'success') {
         const createdCollage = response.data.data;
 
-        setPreview(createdCollage.upload_path);
+        setPreview(createdCollage.photo_url);
       }
     } catch (error) {
       setBtnLoading(false);
