@@ -3,8 +3,6 @@ import React from 'react';
 const ProgressBar = ({ percent, height }) => {
   const progressHeight = height || 5;
 
-  console.log(progressHeight);
-
   return (
     <div className="d-flex align-items-center justify-content-center px-5 w-100 h-100">
       <div className="progress w-100" style={{height: `${progressHeight}px`}}>
