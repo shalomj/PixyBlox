@@ -71,14 +71,4 @@ class CollageService
 
         return $collage;
     }
-
-    /**
-     * @param $photo
-     *
-     * @return \Illuminate\Http\UploadedFile
-     */
-    public function getUploadedFile($photo)
-    {
-        return $photo['file'];
-    }
 }
