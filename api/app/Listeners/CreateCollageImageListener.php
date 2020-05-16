@@ -4,6 +4,7 @@ namespace App\Listeners;
 
 use App\Events\CollageCreatedEvent;
 use App\PixyBlox\PixyBlox;
+use function env;
 
 class CreateCollageImageListener 
 {
@@ -30,7 +31,10 @@ class CreateCollageImageListener
 
         // Initialize PixyBlox collage maker
         $pixyBlox = new PixyBlox(
-            $collage->layout, 500, 500, $collagePhotos->toArray()
+            $collage->layout,
+            env('PIXYBLOX_WIDTH', 400),
+            env('PIXYBLOX_HEIGHT', 400),
+            $collagePhotos->toArray()
         );
 
         // Generate collage
