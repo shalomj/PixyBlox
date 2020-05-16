@@ -63,7 +63,7 @@ const CollageBlock = ({ block }) => {
   if (isUploading) {
     content = <ProgressBar percent={fileReadProgress} />
   } else if (fileLoaded) { 
-    content = <ImageCropper image={preview} setCropDetail={setCropDetail} />
+    content = <ImageCropper image={preview} layout={state.layout} position={block.position} setCropDetail={setCropDetail} />
   } else {
     content = <CollageUploader position={block.position} selectedFileHandler={handleSelectedFile} />
   }
