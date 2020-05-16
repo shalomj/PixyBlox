@@ -10,9 +10,8 @@ class CollagePhotoService
     /**
      * Upload photo and create collage photo instance
      *
-     * @param UploadedFile $file
-     * @param string       $config
-     * @param string       $uploadDir
+     * @param array  $photo
+     * @param string $uploadDir
      *
      * @return CollagePhoto|bool
      */
@@ -20,6 +19,7 @@ class CollagePhotoService
     {
         $file = $photo['file'];
 
+        // Upload file to the storage
         $path = $file->store($uploadDir);
 
         if (!$path) return false;

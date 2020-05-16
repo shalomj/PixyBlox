@@ -43,8 +43,10 @@ class CollageController extends Controller
      */
     public function store(StoreCollageRequest $request)
     {
+        // Save collage data, upload photos and save crop configs
         $collage = $this->collageService->storeOrFail($request->all());
 
+        // Trigger event to generate collage using PixyBlox photo tile maker
         event(new CollageCreatedEvent($collage));
 
         return response()->json([

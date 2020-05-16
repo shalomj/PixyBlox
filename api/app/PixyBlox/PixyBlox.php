@@ -12,7 +12,7 @@ class PixyBlox
     private $canvas;
 
     /*
-     * @var int Canvas layout
+     * @var int The canvas layout style
      */
     private $layout;
 
@@ -31,8 +31,19 @@ class PixyBlox
      */
     private $photos = [];
 
+    /**
+     * @var string Default canvas background color
+     */
     private $background = '#ffffff';
 
+    /**
+     * Create new PixyBlox instance.
+     *
+     * @param       $layout
+     * @param       $width
+     * @param       $height
+     * @param array $photos
+     */
     public function __construct($layout, $width, $height, array $photos)
     {
         $this->layout = $layout;
@@ -41,8 +52,18 @@ class PixyBlox
         $this->photos = $photos;
     }
 
+    /**
+     * Create a collage from provided photos
+     *
+     * @param null $path
+     * @param null $quality
+     * @param null $format
+     *
+     * @return \Intervention\Image\Image
+     */
     public function make($path = null, $quality = null, $format = null) 
     {
+        // Create new canvas
         $this->canvas = Image::canvas($this->width, $this->height, $this->background);
 
         foreach ($this->photos as $photo) {
@@ -56,6 +77,13 @@ class PixyBlox
         return $this->canvas;
     }
 
+    /**
+     * Crop, resize and then insert photo to the canvas
+     *
+     * @param array $photo
+     *
+     * @return \Intervention\Image\Image
+     */
     private function insertToCanvas($photo) 
     {
         $position = $photo['position'];
@@ -70,6 +98,14 @@ class PixyBlox
         return $this->insertByLayoutAndPosition($imageFile, $position);
     }
 
+    /**
+     * Crop image
+     *
+     * @param \Intervention\Image\Image $image
+     * @param array $crop
+     *
+     * @return \Intervention\Image\Image
+     */
     private function crop($image, $crop) 
     {
         return $image->crop(
@@ -77,6 +113,14 @@ class PixyBlox
         );
     }
 
+    /**
+     * Resize the image based on the layout state and position
+     *
+     * @param \Intervention\Image\Image $image
+     * @param int $position
+     *
+     * @return \Intervention\Image\Image
+     */
     private function resizeByLayoutAndPosition($image, $position) 
     {
         // Full single photo
@@ -98,6 +142,14 @@ class PixyBlox
         return $image->resize($halfWidth, $halfHeight);
     }
 
+    /**
+     * Insert photo to the canvas based on the layout style and position
+     *
+     * @param \Intervention\Image\Image $image
+     * @param int $position
+     *
+     * @return \Intervention\Image\Image
+     */
     private function insertByLayoutAndPosition($image, $position) 
     {
         // Full single photo

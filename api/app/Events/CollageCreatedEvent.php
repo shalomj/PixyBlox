@@ -16,9 +16,8 @@ class CollageCreatedEvent
 
     /**
      * Create a new event instance.
-     * 
+     *
      * @param \App\Collage $collage
-     * @return void
      */
     public function __construct(Collage $collage)
     {
