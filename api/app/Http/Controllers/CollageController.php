@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Collage;
 use App\Events\CollageCreatedEvent;
 use App\Http\Requests\StoreCollageRequest;
+use App\Http\Resources\CollageResource;
 use App\Services\CollageService;
 use Exception;
 
@@ -49,7 +50,7 @@ class CollageController extends Controller
 
         return response()->json([
             'status' => 'success',
-            'data' => $collage, 
+            'data' => new CollageResource($collage),
         ]);
     }
 

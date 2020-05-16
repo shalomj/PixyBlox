@@ -42,4 +42,9 @@ class Collage extends Model
     {
         return "collages/{$this->id}";
     }
+
+    public function getPhotoUrl()
+    {
+        return ($this->upload_path) ? \Storage::url($this->upload_path) : '';
+    }
 }
