@@ -40,6 +40,6 @@ class Collage extends Model
      */
     public function getUploadDir()
     {
-        return "collages/{$this->id}_{$this->created_at->timestamp}";
+        return "collages/{$this->id}";
     }
 }
