@@ -6,10 +6,11 @@ import ProgressBar from '../ProgressBar';
 import ImageCropper from '../ImageCropper';
 
 const CollageBlock = ({ block }) => {
-  const { state } = useContext(CollageContext);
+  const { state, dispatch } = useContext(CollageContext);
   const [isUploading, setIsUploading] = useState(false);
   const [fileReadProgress, setFileReadProgress] = useState(0);
   const [fileLoaded, setFileLoaded] = useState(false);
+  const [selectedFile, setSelectedFile] = useState(null);
   const [preview, setPreview] = useState(null);
   const [cropDetail, setCropDetail] = useState({});
 
@@ -17,6 +18,14 @@ const CollageBlock = ({ block }) => {
   const style = getBlockStyleByLayoutPosition(state.layout, block.position);
 
   const handleSelectedFile = file => {
+    dispatch({
+      type: 'SET_PHOTO', 
+      payload: {
+        position: block.position, 
+        file: file, 
+        config: {}
+      }
+    });
 
     setIsUploading(true);
     setFileReadProgress(0);
@@ -25,7 +34,7 @@ const CollageBlock = ({ block }) => {
 
     fileReader.addEventListener('load', event => {
       const result = event.target.result;
-      
+
       setFileLoaded(true);
       setPreview(result);
     });

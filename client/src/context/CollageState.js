@@ -3,6 +3,7 @@ import CollageReducer from './CollageReducer';
 
 const initialState = {
   layout: 1, 
+  photos: []
 };
 
 export const CollageContext = createContext(initialState);
