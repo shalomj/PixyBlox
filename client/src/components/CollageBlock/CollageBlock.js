@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import { CollageContext } from '../../context/CollageState';
 import { getBlockStyleByLayoutPosition } from '../../utils';
 import FileReaderService from '../../services/FileReaderService';
@@ -12,17 +12,16 @@ const CollageBlock = ({ block }) => {
   const [fileReadProgress, setFileReadProgress] = useState(0);
   const [fileLoaded, setFileLoaded] = useState(false);
   const [preview, setPreview] = useState(null);
-  const [cropDetail, setCropDetail] = useState({});
 
-  useEffect(() => {
+  const setCropDetail = (cropDetail) => {
     dispatch({
       type: 'SET_PHOTO', 
       payload: {
         position: block.position, 
         config: cropDetail
       }
-    })
-  }, [cropDetail]);
+    });
+  };
 
   const handleSelectedFile = file => {
     dispatch({
@@ -63,7 +62,7 @@ const CollageBlock = ({ block }) => {
   if (isUploading) {
     content = <ProgressBar percent={fileReadProgress} />
   } else if (fileLoaded) { 
-    content = <ImageCropper image={preview} setCropDetail={setCropDetail} />
+    content = <ImageCropper image={preview} layout={state.layout} position={block.position} setCropDetail={setCropDetail} />
   } else {
     content = <CollageUploader position={block.position} selectedFileHandler={handleSelectedFile} />
   }

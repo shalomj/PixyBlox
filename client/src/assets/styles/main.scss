@@ -18,6 +18,11 @@ body {
   line-height: 1.6;
 }
 
+.spinner-sm {
+  width: 1rem;
+  height: 1rem;
+}
+
 #navbar {
   @include set-navbar-background($navbar-bg-color);
   height: 60px;
@@ -29,7 +34,6 @@ body {
 }
 
 #collage-wrapper {
-  width: 500px;
   height: 100%;
   margin: 0 auto;
   padding-top: 60px;
@@ -44,8 +48,7 @@ body {
 
   #collage-body {
     background-color: #888;
-    height: 500px;
-    border: 1px solid $block-bg-1;
+    width: 100%;
     display: grid;
 
     .collage-block {
@@ -140,11 +143,10 @@ body {
   }
 }
 
-.cropper-container {
-  width: 100%!important;
-  height: 100%!important;
+#collage-preview {
+  border: 1px dashed #aaa;
 
-  .cropper-crop-box {
-    display: none!important;
+  img {
+    max-width: 100%;
   }
 }

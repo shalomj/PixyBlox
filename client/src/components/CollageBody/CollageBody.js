@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { CollageContext } from '../../context/CollageState';
 import CollageBlock from '../CollageBlock';
 
-const CollageBody = () => {
+const CollageBody = ({ collageWidth, collageHeight }) => {
   const { state } = useContext(CollageContext);
 
   let blocks = [];
@@ -14,7 +14,11 @@ const CollageBody = () => {
     });
   }
 
-  const style = (state.layout > 1) ? { gridTemplateColumns: `repeat(2, minmax(200px, 1fr))` } : {};
+  const halfWidth = process.env.REACT_APP_COLLAGE_WIDTH / 2;
+
+  const style = (state.layout > 1) ? { gridTemplateColumns: `repeat(2, minmax(${halfWidth}px, 1fr))` } : {};
+  
+  style.height = collageHeight;
 
   return (
     <div id="collage-body" style={style} className="shadow-lg">
