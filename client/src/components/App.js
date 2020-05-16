@@ -1,12 +1,17 @@
 import React from 'react';
 import Navbar from './Navbar';
+import { CollageContextProvider } from '../context/CollageState';
 import Collage from './Collage';
 
 function App() {
   return (
     <>
       <Navbar />
-      <Collage />
+      <main id="collage-wrapper" className="d-flex align-items-center">
+        <CollageContextProvider>
+          <Collage />
+        </CollageContextProvider>
+      </main>
     </>
   );
 }
