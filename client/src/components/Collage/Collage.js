@@ -1,14 +1,16 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import axios from 'axios';
 import { CollageContext } from '../../context/CollageState';
 import CollageHeader from '../CollageHeader';
 import CollageBody from '../CollageBody';
 
 const Collage = () => {
-
   const { state } = useContext(CollageContext);
+  const [btnLoading, setBtnLoading] = useState(false);
 
   const sendRequest = async (formData) => {
+    setBtnLoading(true);
+
     try {
       const response = await axios({
         method: 'POST', 
@@ -19,6 +21,8 @@ const Collage = () => {
           'Accept': 'application/json'
         }
       });
+
+      setBtnLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -42,7 +46,7 @@ const Collage = () => {
 
   return (
     <div id="collage-container">
-      <CollageHeader saveHandler={processUpload} />
+      <CollageHeader saveHandler={processUpload} btnLoading={btnLoading} />
       <CollageBody />
     </div>
   );

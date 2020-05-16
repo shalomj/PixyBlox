@@ -18,6 +18,11 @@ body {
   line-height: 1.6;
 }
 
+.spinner-sm {
+  width: 1rem;
+  height: 1rem;
+}
+
 #navbar {
   @include set-navbar-background($navbar-bg-color);
   height: 60px;
