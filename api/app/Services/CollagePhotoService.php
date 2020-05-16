@@ -26,7 +26,7 @@ class CollagePhotoService
 
         $collagePhoto->filename = $file->getClientOriginalName();
         $collagePhoto->upload_path = $path;
-        $collagePhoto->config = json_decode($config);
+        $collagePhoto->config = $config;
 
         return $collagePhoto;
     }
