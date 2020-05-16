@@ -11,11 +11,18 @@ const CollageReducer = (state, action) => {
         let photos = [];
 
         if (!state.photos.length)  {
-          photos.push(action.payload);
+          photos = [...state.photos, action.payload];
         } else {
-          photos = state.photos.map(photo => {
-            return photo.position === action.payload.position ? { ...photo, ...action.payload} : photo;
-          });
+          const photoIndex= state.photos.findIndex(photo => photo.position === action.payload.position);
+
+          if (photoIndex === -1) {
+            photos = [...state.photos, action.payload];
+          } else {
+            photos = state.photos.map(photo => {
+              return photo.position === action.payload.position ? { ...photo, ...action.payload} : photo;
+            });
+            console.log('map');
+          }
         }
 
         return {
