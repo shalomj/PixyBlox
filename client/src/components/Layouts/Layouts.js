@@ -35,9 +35,9 @@ const Layouts = () => {
       {
         layouts.map(layout => {
           return (
-            <a key={layout.layout} onClick={() => changeLayoutOnClick(layout.layout)}>
+            <div key={layout.layout} onClick={() => changeLayoutOnClick(layout.layout)}>
               <Layout  layout={layout}/>
-            </a>
+            </div>
           )
         })
       }
