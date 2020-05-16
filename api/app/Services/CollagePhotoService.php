@@ -16,35 +16,21 @@ class CollagePhotoService
      *
      * @return CollagePhoto|bool
      */
-    public function uploadAndCreate(UploadedFile $file, string $config, string $uploadDir)
+    public function uploadAndCreate(array $photo, string $uploadDir)
     {
-        $path = $this->upload($file, $uploadDir);
+        $file = $photo['file'];
+
+        $path = $file->store($uploadDir);
 
         if (!$path) return false;
 
         $collagePhoto = new CollagePhoto;
 
+        $collagePhoto->position = $photo['position'];
         $collagePhoto->filename = $file->getClientOriginalName();
         $collagePhoto->upload_path = $path;
-        $collagePhoto->config = json_decode($config);
+        $collagePhoto->config = $photo['config'];
 
         return $collagePhoto;
-    }
-
-    /**
-     * Upload photo to collage directory
-     *
-     * @param UploadedFile $file
-     * @param string       $uploadDir
-     *
-     * @return false|string
-     */
-    public function upload(UploadedFile $file, string $uploadDir)
-    {
-        $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
-
-        $filename = $originalFilename . '-' . time() . '.' . $file->getClientOriginalExtension();
-
-        return $file->storeAs('public/' . $uploadDir, $filename);
     }
 }

@@ -55,8 +55,7 @@ class CollageService
 
         foreach ($data['photos'] as $photo) {
             $collagePhoto = $this->collagePhotoService->uploadAndCreate(
-                $photo['file'],
-                $photo['config'],
+                $photo,
                 $collage->getUploadDir()
             );
 
@@ -70,15 +69,5 @@ class CollageService
         $collage->photos()->saveMany($photos);
 
         return $collage;
-    }
-
-    /**
-     * @param $photo
-     *
-     * @return \Illuminate\Http\UploadedFile
-     */
-    public function getUploadedFile($photo)
-    {
-        return $photo['file'];
     }
 }

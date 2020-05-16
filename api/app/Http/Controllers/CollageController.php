@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Collage;
+use App\Events\CollageCreatedEvent;
 use App\Http\Requests\StoreCollageRequest;
 use App\Services\CollageService;
 use Exception;
@@ -43,6 +44,8 @@ class CollageController extends Controller
     public function store(StoreCollageRequest $request)
     {
         $collage = $this->collageService->storeOrFail($request->all());
+
+        event(new CollageCreatedEvent($collage));
 
         return response()->json([
             'status' => 'success',
