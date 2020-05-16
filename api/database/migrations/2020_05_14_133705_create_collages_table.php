@@ -16,7 +16,7 @@ class CreateCollagesTable extends Migration
         Schema::create('collages', function (Blueprint $table) {
             $table->id();
             $table->unsignedTinyInteger('layout');
-            $table->text('upload_path')->nullable();
+            $table->text('file_path')->nullable();
             $table->timestamps();
         });
     }
