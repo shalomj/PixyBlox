@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { CollageContext } from '../../context/CollageState';
 import { getBlockStyleByLayoutPosition } from '../../utils';
 import FileReaderService from '../../services/FileReaderService';
@@ -14,8 +14,15 @@ const CollageBlock = ({ block }) => {
   const [preview, setPreview] = useState(null);
   const [cropDetail, setCropDetail] = useState({});
 
-  const finalClassName = `collage-block ${block.bgClassName}`;
-  const style = getBlockStyleByLayoutPosition(state.layout, block.position);
+  useEffect(() => {
+    dispatch({
+      type: 'SET_PHOTO', 
+      payload: {
+        position: block.position, 
+        config: cropDetail
+      }
+    })
+  }, [cropDetail]);
 
   const handleSelectedFile = file => {
     dispatch({
@@ -47,6 +54,9 @@ const CollageBlock = ({ block }) => {
 
     fileReader.read();
   };
+
+  const finalClassName = `collage-block ${block.bgClassName}`;
+  const style = getBlockStyleByLayoutPosition(state.layout, block.position);
 
   let content;
 

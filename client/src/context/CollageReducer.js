@@ -1,3 +1,9 @@
+const mapPhotos = (photos, payload) => {
+  return photos.map(photo => {
+    return photo.position === payload.position ? { ...photo, ...payload} : photo;
+  });
+};
+
 const CollageReducer = (state, action) => {
   switch (action.type) {
     case 'SET_LAYOUT':
@@ -21,7 +27,6 @@ const CollageReducer = (state, action) => {
             photos = state.photos.map(photo => {
               return photo.position === action.payload.position ? { ...photo, ...action.payload} : photo;
             });
-            console.log('map');
           }
         }
 
@@ -30,7 +35,7 @@ const CollageReducer = (state, action) => {
           photos: photos
         }
       break;
-  
+
     default:
         return state;
       break;
