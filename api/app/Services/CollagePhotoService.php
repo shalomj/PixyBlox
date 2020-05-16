@@ -27,8 +27,7 @@ class CollagePhotoService
         $collagePhoto = new CollagePhoto;
 
         $collagePhoto->position = $photo['position'];
-        $collagePhoto->filename = $file->getClientOriginalName();
-        $collagePhoto->upload_path = $path;
+        $collagePhoto->file_path = $path;
         $collagePhoto->config = $photo['config'];
 
         return $collagePhoto;

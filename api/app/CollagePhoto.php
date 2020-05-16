@@ -10,7 +10,8 @@ class CollagePhoto extends Model
      * @param array
      */
     protected $fillable = [
-        'filename', 
+        'position',
+        'file_path',
         'config', 
     ];
 

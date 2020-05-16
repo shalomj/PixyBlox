@@ -59,7 +59,7 @@ class PixyBlox
     private function insertToCanvas($photo) 
     {
         $position = $photo['position'];
-        $path = $photo['upload_path'];
+        $path = $photo['file_path'];
         $crop = json_decode($photo['config'], true);
 
         $imageFile = Image::make(storage_path('app/public/' . $path));

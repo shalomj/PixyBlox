@@ -41,7 +41,7 @@ class CreateCollageImageListener
         $savePath = storage_path("app/public/{$collagePath}/{$filename}");
 
         if ($image->save($savePath, 100, 'jpg')) {
-            $collage->upload_path = "{$collagePath}/{$filename}";
+            $collage->file_path = "{$collagePath}/{$filename}";
 
             $collage->save();
         }

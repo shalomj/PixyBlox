@@ -38,14 +38,9 @@ class CollageService
             throw new NoUploadedPhotoException('No photo(s) uploaded.');
         }
 
-        $collage = new Collage();
-
-        $collage->user_id = 1;
-        $collage->title = $data['title'];
-        $collage->description = $data['description'];
-        $collage->layout = $data['layout'];
-        $collage->filename = '';
-        $collage->extension = '';
+        $collage = new Collage([
+            'layout' => $data['layout']
+        ]);
 
         if (!$collage->save()) {
             throw new CollageNotCreatedException('Unable to create collage. Please try again later');
@@ -60,8 +55,6 @@ class CollageService
             );
 
             if ($collagePhoto) {
-                $collagePhoto->user_id = $collage->user_id;
-
                 $photos[] = $collagePhoto;
             }
         }
