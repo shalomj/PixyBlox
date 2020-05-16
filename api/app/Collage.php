@@ -15,14 +15,6 @@ class Collage extends Model
     ];
 
     /**
-     * Get the user that owns the collage.
-     */
-    public function user()
-    {
-        return $this->belongsTo('App\User');
-    }
-
-    /**
      * Get the photos owned by the collage.
      */
     public function photos() 

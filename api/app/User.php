@@ -36,12 +36,4 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    /**
-     * Get the collages created by the user.
-     */
-    public function collages() 
-    {
-        return $this->hasMany('App\Collage');
-    }
 }
