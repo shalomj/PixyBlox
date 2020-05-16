@@ -34,7 +34,6 @@ body {
 }
 
 #collage-wrapper {
-  width: 500px;
   height: 100%;
   margin: 0 auto;
   padding-top: 60px;
@@ -49,7 +48,7 @@ body {
 
   #collage-body {
     background-color: #888;
-    height: 500px;
+    width: 100%;
     display: grid;
 
     .collage-block {

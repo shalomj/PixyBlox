@@ -6,8 +6,8 @@ const ImageCropper = ({ image, layout, position, setCropDetail }) => {
 
   const getCanvasAndCropSize = (layout, position) => {
     const options = {
-      width: 500, 
-      height: 500, 
+      width: parseInt(process.env.REACT_APP_COLLAGE_WIDTH), 
+      height: parseInt(process.env.REACT_APP_COLLAGE_HEIGHT), 
     };
 
     if (layout === 1) {
@@ -38,7 +38,10 @@ const ImageCropper = ({ image, layout, position, setCropDetail }) => {
       cropBoxResizable: false, 
       ready() {
         this.cropper.setCanvasData(cropperOpts);
-        this.cropper.setCropBoxData(cropperOpts);
+        this.cropper.setCropBoxData({
+          left: 0,
+          ...cropperOpts
+        });
       },
       crop(event) {
         const cropDetail = this.cropper.getData(true);

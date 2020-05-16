@@ -26,7 +26,7 @@ const CollageUploader = ({ position, selectedFileHandler }) => {
 
   return (
     <div className="collage-block-uploader d-flex align-items-center justify-content-center">
-      <div className="w-100 text-center px-5">
+      <div className="w-100 text-center px-4">
         <p>Photo {position}</p>
         <input type="file" ref={inputFile} className="d-none" accept="image/png,image/jpeg" onChange={handleOnFileChange}/>
         <button className="btn btn-light btn-lg d-block shadow text-uppercase w-100" onClick={handleBrowseClick}>Browse</button>

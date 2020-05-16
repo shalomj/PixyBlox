@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import axios from 'axios';
 import { CollageContext } from '../../context/CollageState';
+import { getCollageWidth, getCollageHeight } from '../../utils';
 import CollageHeader from '../CollageHeader';
 import CollageBody from '../CollageBody';
 
@@ -45,9 +46,9 @@ const Collage = () => {
   };
 
   return (
-    <div id="collage-container">
+    <div id="collage-container" style={{width: getCollageWidth()}}>
       <CollageHeader saveHandler={processUpload} btnLoading={btnLoading} />
-      <CollageBody />
+      <CollageBody collageHeight={getCollageHeight()} />
     </div>
   );
 };
