@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 
 const CollageUploader = ({ position, selectedFileHandler }) => {
   const inputFile = useRef(null);
