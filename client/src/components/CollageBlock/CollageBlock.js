@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { CollageContext } from '../../context/CollageState';
 import { getBlockStyleByLayoutPosition } from '../../utils';
+import FileReaderService from '../../services/FileReaderService';
 import CollageUploader from '../CollageUploader/CollageUploader';
 import ProgressBar from '../ProgressBar';
 import ImageCropper from '../ImageCropper';
@@ -10,7 +11,6 @@ const CollageBlock = ({ block }) => {
   const [isUploading, setIsUploading] = useState(false);
   const [fileReadProgress, setFileReadProgress] = useState(0);
   const [fileLoaded, setFileLoaded] = useState(false);
-  const [selectedFile, setSelectedFile] = useState(null);
   const [preview, setPreview] = useState(null);
   const [cropDetail, setCropDetail] = useState({});
 
@@ -30,30 +30,22 @@ const CollageBlock = ({ block }) => {
     setIsUploading(true);
     setFileReadProgress(0);
 
-    const fileReader = new FileReader();
-
-    fileReader.addEventListener('load', event => {
-      const result = event.target.result;
-
-      setFileLoaded(true);
-      setPreview(result);
-    });
-
-    fileReader.addEventListener('progress', event => {
-      if (event.loaded && event.total) {
-        const percent = (event.loaded / event.total) * 100;
-
+    const fileReader = new FileReaderService(file, {
+      progress: percent => {
         setFileReadProgress(percent);
-
-        if (percent === 100) {
-          setTimeout(() => {
-            setIsUploading(false);  
-          }, 1000);
-        }
+      },
+      completed: () => {
+        setTimeout(() => {
+          setIsUploading(false);  
+        }, 1000);
+      },
+      load: result => {
+        setFileLoaded(true);
+        setPreview(result);
       }
     });
 
-    fileReader.readAsDataURL(file);
+    fileReader.read();
   };
 
   let content;
