@@ -139,3 +139,12 @@ body {
     }
   }
 }
+
+.cropper-container {
+  width: 100%!important;
+  height: 100%!important;
+
+  .cropper-crop-box {
+    display: none!important;
+  }
+}

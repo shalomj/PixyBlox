@@ -3,13 +3,15 @@ import { CollageContext } from '../../context/CollageState';
 import { getBlockStyleByLayoutPosition } from '../../utils';
 import CollageUploader from '../CollageUploader/CollageUploader';
 import ProgressBar from '../ProgressBar';
+import ImageCropper from '../ImageCropper';
 
 const CollageBlock = ({ block }) => {
   const { state } = useContext(CollageContext);
   const [isUploading, setIsUploading] = useState(false);
   const [fileReadProgress, setFileReadProgress] = useState(0);
-  const [fileSelected, setFileSelected] = useState(false);
+  const [fileLoaded, setFileLoaded] = useState(false);
   const [preview, setPreview] = useState(null);
+  const [cropDetail, setCropDetail] = useState({});
 
   const finalClassName = `collage-block ${block.bgClassName}`;
   const style = getBlockStyleByLayoutPosition(state.layout, block.position);
@@ -23,17 +25,14 @@ const CollageBlock = ({ block }) => {
 
     fileReader.addEventListener('load', event => {
       const result = event.target.result;
-
-      // Process result
-      setFileSelected(true);
+      
+      setFileLoaded(true);
       setPreview(result);
     });
 
     fileReader.addEventListener('progress', event => {
       if (event.loaded && event.total) {
         const percent = (event.loaded / event.total) * 100;
-
-        console.log(percent);
 
         setFileReadProgress(percent);
 
@@ -52,8 +51,8 @@ const CollageBlock = ({ block }) => {
 
   if (isUploading) {
     content = <ProgressBar percent={fileReadProgress} />
-  } else if (fileSelected) { 
-    content = <img src={preview} className="w-100 h-100" />;
+  } else if (fileLoaded) { 
+    content = <ImageCropper image={preview} setCropDetail={setCropDetail} />
   } else {
     content = <CollageUploader position={block.position} selectedFileHandler={handleSelectedFile} />
   }
