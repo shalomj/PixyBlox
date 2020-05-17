@@ -24,7 +24,7 @@ cd pixyblox
 
 ## Project folder structure
 
-The project is separated into to directories: `api` (Laravel framework) and `client` (React).
+The project is separated into two directories: `api` (Laravel framework) and `client` (React).
 
 ### Laravel API Installation
 
@@ -65,7 +65,7 @@ Run migrations
 php artisan migrate
 ```
 
-PixyBlox uses `public` disk to store files so you need to create a symbolic link in order for the uploaded files to be accessible from the web. More info [here](https://laravel.com/docs/7.x/filesystem#the-public-disk "The Public Disk")
+PixyBlox uses `public` disk to store files so you need to create a symbolic link in order for the uploaded files to be accessible from the web. More info [here](https://laravel.com/docs/7.x/filesystem#the-public-disk "The Public Disk").
 
 ```bash
 php artisan storage:link
@@ -81,7 +81,7 @@ Go to `client` directory
 cd client
 ```
 
-Install dependencies
+Install React and its dependencies
 
 ```bash
 npm install
