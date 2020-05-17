@@ -2,7 +2,12 @@ import React, { useContext } from 'react';
 import { CollageContext } from '../../context/CollageState';
 import CollageBlock from '../CollageBlock';
 
-const CollageBody = ({ collageWidth, collageHeight }) => {
+/**
+ * Component for the collage body
+ * 
+ * @param {String} param0 The height of the collage
+ */
+const CollageBody = ({ collageHeight }) => {
   const { state } = useContext(CollageContext);
 
   let blocks = [];
@@ -14,7 +19,7 @@ const CollageBody = ({ collageWidth, collageHeight }) => {
     });
   }
 
-  const halfWidth = process.env.REACT_APP_COLLAGE_WIDTH / 2;
+  const halfWidth = parseInt(process.env.REACT_APP_COLLAGE_WIDTH) / 2;
 
   const style = (state.layout > 1) ? { gridTemplateColumns: `repeat(2, minmax(${halfWidth}px, 1fr))` } : {};
   

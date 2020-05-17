@@ -1,6 +1,12 @@
 import React from 'react';
 import Layouts from '../Layouts';
 
+/**
+ * Component for the collage header layout
+ * 
+ * @param {Function} param0 Save button onClick event handler
+ * @param {Boolean} param1 When true, the save button will be disabled and a loading icon will be display next to the label
+ */
 const CollageHeader = ({ saveHandler, btnLoading }) => {
   return (
     <header id="collage-header" className="d-flex align-items-center justify-content-between">

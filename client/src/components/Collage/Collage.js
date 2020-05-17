@@ -6,12 +6,20 @@ import CollageHeader from '../CollageHeader';
 import CollageBody from '../CollageBody';
 import previewPlaceholder  from '../../assets/images/preview-placeholder.png';
 
+/**
+ * Main component of the collage
+ */
 const Collage = () => {
   const { state } = useContext(CollageContext);
   const [btnLoading, setBtnLoading] = useState(false);
   const [preview, setPreview] = useState(previewPlaceholder);
 
+  /**
+   * Send the request to the API endpoint
+   * @param {FormData} formData The FormData to be send with the request
+   */
   const sendRequest = async (formData) => {
+    // Start save button loading
     setBtnLoading(true);
 
     try {
@@ -30,6 +38,7 @@ const Collage = () => {
       if (response.data.status === 'success') {
         const createdCollage = response.data.data;
 
+        // Display the preview for the created collage
         setPreview(createdCollage.photo_url);
       }
     } catch (error) {
@@ -37,11 +46,12 @@ const Collage = () => {
     }
   };
 
+  /**
+   * Create a FormData and send the request
+   */
   const processUpload = () => {
     const formData = new FormData();
 
-    formData.append('title', 'Test');
-    formData.append('description', 'This is a test collage');
     formData.append('layout', state.layout);
 
     state.photos.forEach((photo, index) => {
