@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { CollageContext } from '../../context/CollageState';
 import Layout from '../Layout';
 
+// Available layouts
 const layouts = [
   {
     layout: 1, 
@@ -17,10 +18,18 @@ const layouts = [
   },
 ];
 
+/**
+ * Component to the layout selection
+ */
 const Layouts = () => {
 
   const { dispatch } = useContext(CollageContext);
 
+  /**
+   * Update the layout state on the context
+   * 
+   * @param {Number} layout The selected layout
+   */
   const changeLayoutOnClick = layout => {
     dispatch({
       type: 'SET_LAYOUT', 

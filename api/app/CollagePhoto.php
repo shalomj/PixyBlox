@@ -10,7 +10,8 @@ class CollagePhoto extends Model
      * @param array
      */
     protected $fillable = [
-        'filename', 
+        'position',
+        'file_path',
         'config', 
     ];
 
@@ -20,13 +21,5 @@ class CollagePhoto extends Model
     public function collage() 
     {
         return $this->belongsTo('App\Collage');
-    }
-
-    /**
-     * Get the user that owns the collage photo.
-     */
-    public function user() 
-    {
-        return $this->belongsTo('App\User');
     }
 }

@@ -1,8 +1,19 @@
 import React, { useRef } from 'react';
 
+/**
+ * Component for file upload for each collage block
+ * 
+ * @param {Number} param0 The position of the block where this component is rendered
+ * @param {Function} param1 Function to call when the user select a file to upload
+ */
 const CollageUploader = ({ position, selectedFileHandler }) => {
   const inputFile = useRef(null);
 
+  /**
+   * Handles the onChange event of the file
+   * 
+   * @param {Object} event Change event of the file
+   */
   const handleOnFileChange = event => {
     const fileList = event.target.files;
 
@@ -20,6 +31,11 @@ const CollageUploader = ({ position, selectedFileHandler }) => {
     selectedFileHandler(file);
   };
 
+  /**
+   * Handles onClick event of the Browse button
+   * 
+   * @param {Object} event Click event
+   */
   const handleBrowseClick = event => {
     inputFile.current.click();
   };

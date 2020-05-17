@@ -1,5 +1,11 @@
 import React from 'react';
 
+/**
+ * Component for the progress bar
+ * 
+ * @param {Number} param0 The width of the progress bar
+ * @param {Number} param1 The height of the progress bar
+ */
 const ProgressBar = ({ percent, height }) => {
   const progressHeight = height || 5;
 

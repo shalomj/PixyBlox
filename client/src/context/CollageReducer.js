@@ -1,3 +1,9 @@
+/**
+ * Reducer for Collage context
+ * 
+ * @param {Object} state The state of the context
+ * @param {Object} action Action to update the state
+ */
 const CollageReducer = (state, action) => {
   switch (action.type) {
     case 'SET_LAYOUT':

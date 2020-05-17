@@ -16,6 +16,7 @@ class CollageResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'layout' => $this->layout,
             'photo_url' => $this->getPhotoUrl(),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,

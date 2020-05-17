@@ -10,20 +10,9 @@ class Collage extends Model
      * @param array
      */
     protected $fillable = [
-        'title', 
-        'description', 
-        'layout', 
-        'filename', 
-        'extension', 
+        'layout',
+        'file_path',
     ];
-
-    /**
-     * Get the user that owns the collage.
-     */
-    public function user() 
-    {
-        return $this->belongsTo('App\User');
-    }
 
     /**
      * Get the photos owned by the collage.
@@ -45,6 +34,6 @@ class Collage extends Model
 
     public function getPhotoUrl()
     {
-        return ($this->upload_path) ? \Storage::url($this->upload_path) : '';
+        return ($this->file_path) ? \Storage::url($this->file_path) : '';
     }
 }

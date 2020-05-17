@@ -7,7 +7,6 @@ use App\Events\CollageCreatedEvent;
 use App\Http\Requests\StoreCollageRequest;
 use App\Http\Resources\CollageResource;
 use App\Services\CollageService;
-use Exception;
 
 class CollageController extends Controller
 {
@@ -44,8 +43,10 @@ class CollageController extends Controller
      */
     public function store(StoreCollageRequest $request)
     {
+        // Save collage data, upload photos and save crop configs
         $collage = $this->collageService->storeOrFail($request->all());
 
+        // Trigger event to generate collage using PixyBlox photo tile maker
         event(new CollageCreatedEvent($collage));
 
         return response()->json([
