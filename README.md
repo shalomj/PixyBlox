@@ -1,29 +1,108 @@
-# README #
+# PixyBlox
 
-This README would normally document whatever steps are necessary to get your application up and running.
+PixyBlox is a Photo Tile Maker app made with React and Laravel. Users can choose a layout and upload an image file to each block or tile on the layout. Users can drag and zoom on the images to customize the tile and save it to generate a tiled image.
 
-### What is this repository for? ###
+### Screenshots
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+![Full layout collage](/screenshots/layout-1.png "Layout 1")
+![Two column layout collage](/screenshots/layout-2.png "Layout 2")
+![Tile layout collage](/screenshots/layout-3.png "Layout 3")
 
-### How do I get set up? ###
+## Installation
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+Clone the repository.
 
-### Contribution guidelines ###
+```bash
+git clone https://shalom2315@bitbucket.org/shalom2315/pixyblox.git
+```
 
-* Writing tests
-* Code review
-* Other guidelines
+Go to the directory.
 
-### Who do I talk to? ###
+```bash
+cd pixyblox
+```
 
-* Repo owner or admin
-* Other community or team contact
+## Project folder structure
+
+The project is separated into to directories: `api` (Laravel framework) and `client` (React).
+
+### Laravel API Installation
+
+Go to `api` directory
+
+```bash
+cd api
+```
+
+Rename `.env.example` file to `.env`. All variables are already configured, no changes needed.
+
+Run composer command to install the Laravel framework and its dependencies.
+
+```bash
+composer install
+```
+
+Rename `Homestead.yaml.example` file to `Homestead.yaml`
+
+Open the `Homestead.yaml` file and set the path to the PixyBlox folder.
+
+```yaml
+folders:
+    -
+        map: ~/path/to/pixyblox
+        to: /home/vagrant/code
+```
+
+Run Homestead development server.
+
+```bash
+vagrant up
+```
+
+Run migrations
+
+```bash
+php artisan migrate
+```
+
+PixyBlox uses `public` disk to store files so you need to create a symbolic link in order for the uploaded files to be accessible from the web. More info [here](https://laravel.com/docs/7.x/filesystem#the-public-disk "The Public Disk")
+
+```bash
+php artisan storage:link
+```
+
+***
+
+### React Installation
+
+Go to `client` directory
+
+```bash
+cd client
+```
+
+Install dependencies
+
+```bash
+npm install
+```
+
+Run development web server
+
+```bash
+npm start
+```
+
+Production build
+
+```bash
+npm run build
+```
+
+Run build with a static server
+
+```bash
+serve -s build
+```
+
+Open link provided (e.g) http://localhost:5000
