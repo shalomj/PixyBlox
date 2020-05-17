@@ -49,8 +49,14 @@ Open the `Homestead.yaml` file and set the path to the PixyBlox folder.
 ```yaml
 folders:
     -
-        map: ~/path/to/pixyblox
+        map: ~/path/to/pixyblox/api/folder
         to: /home/vagrant/code
+```
+
+Add `pixyblox.test` to the `hosts` file on your machine.
+
+```
+192.168.10.10 pixyblox.test
 ```
 
 Run Homestead development server.
