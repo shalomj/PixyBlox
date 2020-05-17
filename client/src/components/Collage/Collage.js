@@ -55,6 +55,8 @@ const Collage = () => {
     formData.append('layout', state.layout);
 
     state.photos.forEach((photo, index) => {
+      console.log(`Photo ${photo.position}: `, photo.config);
+
       formData.append(`photos[${index}][position]`, photo.position);
       formData.append(`photos[${index}][file]`, photo.file);
       formData.append(`photos[${index}][config]`, JSON.stringify(photo.config));
