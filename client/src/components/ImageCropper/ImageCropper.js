@@ -69,8 +69,6 @@ const ImageCropper = ({ image, layout, position, setCropDetail }) => {
       crop(event) {
         const cropDetail = this.cropper.getData(true);
 
-        console.log(cropDetail);
-
         setCropDetail(cropDetail);
       },
     });
